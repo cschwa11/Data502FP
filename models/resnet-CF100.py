@@ -70,7 +70,7 @@ class Bottleneck(nn.Module):
         return out
 
 
-class ResNetCF100(nn.Module):
+class ResNet(nn.Module):
     def __init__(self, block, num_blocks, num_classes=100):
         super(ResNet, self).__init__()
         self.in_planes = 64
@@ -104,7 +104,7 @@ class ResNetCF100(nn.Module):
         return out
 
 
-def ResNet18():
+def ResNet18_100():
     return ResNet(BasicBlock, [2, 2, 2, 2])
 
 
