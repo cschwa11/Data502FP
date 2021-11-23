@@ -7,8 +7,8 @@ from .densenet import *
 from .googlenet import *
 from .shufflenet import *
 from .shufflenetv2 import *
-from .resnet-CF10 import *
-from .resnet-CF100 import *
+from .resnet_CF10 import *
+from .resnet_CF100 import *
 from .resnext import *
 from .preact_resnet import *
 from .mobilenet import *
