@@ -85,7 +85,7 @@ class TinyImageNetPaths:
                          root_dir)
     train_path = os.path.join(root_dir, 'train')
     val_path = os.path.join(root_dir, 'val')
-    test_path = os.path.join(root_dir, 'test')
+    test_path = os.path.join(root_dir, 'test','images')
 
     wnids_path = os.path.join(root_dir, 'wnids.txt')
     words_path = os.path.join(root_dir, 'words.txt')
@@ -114,8 +114,9 @@ class TinyImageNetPaths:
     }
 
     # Get the test paths
-    self.paths['test'] = list(map(lambda x: os.path.join(test_path, x),
-                                      os.listdir(test_path)))
+    self.paths['test'] = [(y,'') for y in list(map(lambda x: os.path.join(test_path, x),os.listdir(test_path)))]
+  
+
     # Get the validation paths and labels
     with open(os.path.join(val_path, 'val_annotations.txt')) as valf:
       for line in valf:
@@ -137,6 +138,7 @@ class TinyImageNetPaths:
           fname = os.path.join(imgs_path, fname)
           bbox = int(x0), int(y0), int(x1), int(y1)
           self.paths['train'].append((fname, label_id, nid, bbox))
+
 
 """Datastructure for the tiny image dataset.
 Args:
@@ -181,6 +183,8 @@ class TinyImageNetDataset(Dataset):
       self.label_data = np.zeros((self.samples_num,), dtype=np.int)
       for idx in tqdm(range(self.samples_num), desc=load_desc):
         s = self.samples[idx]
+        print(s)
+        print(s[0])
         img = imageio.imread(s[0])
         img = _add_channels(img)
         self.img_data[idx] = img
