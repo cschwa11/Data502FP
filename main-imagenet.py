@@ -239,12 +239,12 @@ transform_test = transforms.Compose([
 ])
 
 trainset = TinyImageNetDataset(
-    root='/content/tiny-imagenet-200', train=True, download=False, transform=transform_train)
+    root_dir='/content/tiny-imagenet-200', train=True, download=False, transform=transform_train)
 trainloader = torch.utils.data.DataLoader(
     trainset, batch_size=128, shuffle=True, num_workers=2)
 
 testset = TinyImageNetDataset(
-    root='/content/tiny-imagenet-200', train=False, download=False, transform=transform_test)
+    root_dir='/content/tiny-imagenet-200', train=False, download=False, transform=transform_test)
 testloader = torch.utils.data.DataLoader(
     testset, batch_size=100, shuffle=False, num_workers=2)
 
