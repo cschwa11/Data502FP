@@ -232,7 +232,7 @@ start_epoch = 0  # start from epoch 0 or last checkpoint epoch
 # Data
 print('==> Preparing data..')
 transform_train = transforms.Compose([
-    print(type())
+    print(type()),
     transforms.ToPILImage('RGB'),
     transforms.Resize(256),
     transforms.CenterCrop(224),
