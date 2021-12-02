@@ -183,7 +183,7 @@ class TinyImageNetDataset(Dataset):
       self.label_data = np.zeros((self.samples_num,), dtype=np.int)
       for idx in tqdm(range(self.samples_num), desc=load_desc):
         s = self.samples[idx]
-        img = np.asarray(imageio.imread(s[0]))
+        img = (imageio.imread(s[0]))
         img = _add_channels(img)
         self.img_data[idx] = img
         if mode != 'test':
@@ -232,7 +232,6 @@ start_epoch = 0  # start from epoch 0 or last checkpoint epoch
 # Data
 print('==> Preparing data..')
 transform_train = transforms.Compose([
-    print(type()),
     transforms.ToPILImage('RGB'),
     transforms.Resize(256),
     transforms.CenterCrop(224),
