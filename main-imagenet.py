@@ -206,13 +206,13 @@ class TinyImageNetDataset(Dataset):
     else:
       s = self.samples[idx]
       img = imageio.imread(s[0])
-      img.shape
       lbl = None if self.mode == 'test' else s[self.label_idx]
     sample = {'image': img, 'label': lbl}
 
     if self.transform:
       sample = self.transform(sample['image'])
-      print(sample)
+      print(img.shape)
+      print(sample.shape)
     return sample
 
 parser = argparse.ArgumentParser(description='PyTorch TinyImageNetDataset Training')
