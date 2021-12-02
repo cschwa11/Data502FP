@@ -229,35 +229,27 @@ start_epoch = 0  # start from epoch 0 or last checkpoint epoch
 # Data
 print('==> Preparing data..')
 transform_train = transforms.Compose([
-    print(type(img)),
     transforms.ToPILImage(),
-    print(type(img)),
     transforms.RandomCrop(32, padding=4),
-    print(type(img)),
     transforms.RandomHorizontalFlip(),
-    print(type()),
     transforms.ToTensor(),
-    print(type(img)),
     transforms.Normalize((0.4914, 0.4822, 0.4465), (0.2023, 0.1994, 0.2010))
     
 ])
 
 transform_test = transforms.Compose([
-    print(type(img)),
     transforms.ToPILImage(),
-    print(type(img)),
     transforms.ToTensor(),
-    print(type(img)),
-    transforms.Normalize((0.4914, 0.4822, 0.4465), (0.2023, 0.1994, 0.2010)),
+    transforms.Normalize((0.4914, 0.4822, 0.4465), (0.2023, 0.1994, 0.2010))
 ])
 
 trainset = TinyImageNetDataset(
-    root_dir='/content/tiny-imagenet-200', mode='train', download=False, transform=transform_train)
+    root_dir='/content/tiny-imagenet-200', mode='train', download=False#, transform=#transform_train)
 trainloader = torch.utils.data.DataLoader(
     trainset, batch_size=128, shuffle=True, num_workers=2)
 
 testset = TinyImageNetDataset(
-    root_dir='/content/tiny-imagenet-200', mode='test', download=False, transform=transform_test)
+    root_dir='/content/tiny-imagenet-200', mode='test', download=False#, transform=transform_test)
 testloader = torch.utils.data.DataLoader(
     testset, batch_size=100, shuffle=False, num_workers=2)
 
