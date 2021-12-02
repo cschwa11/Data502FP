@@ -256,7 +256,7 @@ classes = ('n02124075','n04067472','n04540053','n04099969','n07749582','n0164157
 # Model
 print('==> Building model..')
 # net = VGG('VGG19')
-net = ResNet_TIN()
+net = ResNet18_10()
 # net = PreActResNet18()
 # net = GoogLeNet()
 # net = DenseNet121()
