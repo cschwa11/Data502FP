@@ -213,6 +213,7 @@ class TinyImageNetDataset(Dataset):
       sample = self.transform(sample['image'])
       print(img.shape)
       print(sample.shape)
+      print(type(sample))
     return sample
 
 parser = argparse.ArgumentParser(description='PyTorch TinyImageNetDataset Training')
