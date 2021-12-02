@@ -205,7 +205,7 @@ class TinyImageNetDataset(Dataset):
       lbl = None if self.mode == 'test' else self.label_data[idx]
     else:
       s = self.samples[idx]
-      img = imageio.imread(s[0]).convert("RGB")
+      img = imageio.imread(s[0])
       lbl = None if self.mode == 'test' else s[self.label_idx]
     sample = {'image': img, 'label': lbl}
 
@@ -229,16 +229,20 @@ start_epoch = 0  # start from epoch 0 or last checkpoint epoch
 # Data
 print('==> Preparing data..')
 transform_train = transforms.Compose([
-    transforms.ToTensor(),
-    transforms.RandomCrop(32, padding=4),
+    transforms.Resize(256),
+    transforms.CenterCrop(224),
     transforms.RandomHorizontalFlip(),
-    transforms.Normalize((0.5,0.5,0.5),(0.4914, 0.4822, 0.4465), (0.2023, 0.1994, 0.2010))
+    transforms.ToTensor(),
+    transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
     
 ])
 
 transform_test = transforms.Compose([
+    transforms.Resize(256),
+    transforms.CenterCrop(224),
+    transforms.RandomHorizontalFlip(),
     transforms.ToTensor(),
-    transforms.Normalize((0.4914, 0.4822, 0.4465), (0.2023, 0.1994, 0.2010))
+    transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
 ])
 
 trainset = TinyImageNetDataset(
