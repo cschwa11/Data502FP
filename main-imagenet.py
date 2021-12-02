@@ -205,7 +205,7 @@ class TinyImageNetDataset(Dataset):
       lbl = None if self.mode == 'test' else self.label_data[idx]
     else:
       s = self.samples[idx]
-      img = imageio.imread(s[0])
+      img = imageio.imread(s[0]).convert("RGB")
       lbl = None if self.mode == 'test' else s[self.label_idx]
     sample = {'image': img, 'label': lbl}
 
