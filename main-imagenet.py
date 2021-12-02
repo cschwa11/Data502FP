@@ -185,6 +185,7 @@ class TinyImageNetDataset(Dataset):
         s = self.samples[idx]
         img = np.asarray(imageio.imread(s[0]))
         img = _add_channels(img)
+	print(img.shape)
         self.img_data[idx] = img
         if mode != 'test':
           self.label_data[idx] = s[self.label_idx]
@@ -230,7 +231,7 @@ start_epoch = 0  # start from epoch 0 or last checkpoint epoch
 # Data
 print('==> Preparing data..')
 transform_train = transforms.Compose([
-    transforms.ToPILImage(),
+    transforms.ToPILImage('RGB'),
     transforms.Resize(256),
     transforms.CenterCrop(224),
     transforms.RandomHorizontalFlip(),
@@ -240,7 +241,7 @@ transform_train = transforms.Compose([
 ])
 
 transform_test = transforms.Compose([
-    transforms.ToPILImage(),
+    transforms.ToPILImage('RGB'),
     transforms.Resize(256),
     transforms.CenterCrop(224),
     transforms.RandomHorizontalFlip(),
