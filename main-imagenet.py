@@ -185,7 +185,6 @@ class TinyImageNetDataset(Dataset):
         s = self.samples[idx]
         img = np.asarray(imageio.imread(s[0]))
         img = _add_channels(img)
-	print(img.shape)
         self.img_data[idx] = img
         if mode != 'test':
           self.label_data[idx] = s[self.label_idx]
@@ -207,6 +206,7 @@ class TinyImageNetDataset(Dataset):
     else:
       s = self.samples[idx]
       img = imageio.imread(s[0])
+      img.shape
       lbl = None if self.mode == 'test' else s[self.label_idx]
     sample = {'image': img, 'label': lbl}
 
