@@ -210,7 +210,7 @@ class TinyImageNetDataset(Dataset):
     sample = {'image': img, 'label': lbl}
 
     if self.transform:
-      sample = self.transform(sample)
+      sample = self.transform(sample['image'])
     return sample
 
 parser = argparse.ArgumentParser(description='PyTorch TinyImageNetDataset Training')
