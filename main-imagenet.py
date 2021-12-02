@@ -154,7 +154,7 @@ Members:
   label_data: Label data
 """
 class TinyImageNetDataset(Dataset):
-  def __init__(self, root_dir, mode='train', preload=True, load_transform=None,
+  def __init__(self, root_dir, mode='train', preload=False, load_transform=None,
                transform=None, download=False, max_samples=None):
     tinp = TinyImageNetPaths(root_dir, download)
     self.mode = mode
