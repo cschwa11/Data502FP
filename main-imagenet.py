@@ -211,6 +211,7 @@ class TinyImageNetDataset(Dataset):
 
     if self.transform:
       sample = self.transform(sample['image'])
+      print(sample)
     return sample
 
 parser = argparse.ArgumentParser(description='PyTorch TinyImageNetDataset Training')
@@ -229,7 +230,7 @@ start_epoch = 0  # start from epoch 0 or last checkpoint epoch
 # Data
 print('==> Preparing data..')
 transform_train = transforms.Compose([
-    transforms.toPILImage(),
+    transforms.ToPILImage(),
     transforms.Resize(256),
     transforms.CenterCrop(224),
     transforms.RandomHorizontalFlip(),
@@ -239,7 +240,7 @@ transform_train = transforms.Compose([
 ])
 
 transform_test = transforms.Compose([
-    transforms.toPILImage(),
+    transforms.ToPILImage(),
     transforms.Resize(256),
     transforms.CenterCrop(224),
     transforms.RandomHorizontalFlip(),
