@@ -104,7 +104,7 @@ class ResNet(nn.Module):
         return out
 
 
-def ResNet18_TIN():
+def ResNet_TIN():
     return ResNet(BasicBlock, [2, 2, 2, 2])
 
 
