@@ -52,12 +52,12 @@ transform_test = transforms.Compose([
 ])
 
 trainset = torchvision.datasets.ImageFolder(
-    root=os.path.join(data_dir, 'train'), mode='train', transform=transform_train)
+    root=os.path.join(data_dir, 'train'), transform=transform_train)
 trainloader = torch.utils.datasets.DataLoader(
     trainset, batch_size=100, shuffle=True, num_workers=100)
 
 testset = torchvision.datasets.ImageFolder(
-    root=os.path.join(data_dir, 'test'), mode='test', transform=transform_test)
+    root=os.path.join(data_dir, 'test'), transform=transform_test)
 testloader = torch.utils.data.DataLoader(
     testset, batch_size=100, shuffle=False, num_workers=0)
 
