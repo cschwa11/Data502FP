@@ -14,15 +14,6 @@ import argparse
 from models import *
 from utils import progress_bar
 
-import imageio
-import numpy as np
-import os
-
-from collections import defaultdict
-from torch.utils.data import Dataset
-
-from tqdm.autonotebook import tqdm
-
 	
     
 parser = argparse.ArgumentParser(description='PyTorch TinyImageNetDataset Training')
