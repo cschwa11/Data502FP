@@ -23,18 +23,6 @@ from torch.utils.data import Dataset
 
 from tqdm.autonotebook import tqdm
 
-tinyimage_train = Dataset.ImageFolder('/content/tiny-imagenet-200/train', transform = transform)
-tinyimage_train = Dataset.ImageFolder('/content/tiny-imagenet-200/train', transform = transform)
-
-transform = transforms.compose([
-	transforms.Resize(256),
-    	transforms.CenterCrop(224),
-    	transforms.ToTensor(),
-    	transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
-	])
-
-trainloader = torch.utils.data.DataLoader(tinyimage_train, batch_size=32, shuffle = True, mode='train')
-testloader = torch.utils.data.DataLoader(tinyimage_test, batch_size=32, shuffle = False, mode='test')
 	
     
 parser = argparse.ArgumentParser(description='PyTorch TinyImageNetDataset Training')
@@ -50,16 +38,28 @@ device = 'cuda' if torch.cuda.is_available() else 'cpu'
 best_acc = 0  # best test accuracy
 start_epoch = 0  # start from epoch 0 or last checkpoint epoch
 
+
 # Data
 print('==> Preparing data..')
+data_dir = 'tiny-imagenet-200/'
+
 transform_train = transforms.Compose([
-    transforms.Resize(256), # Resize images to 256 x 256
-                transforms.CenterCrop(224), # Center crop image
-                transforms.RandomHorizontalFlip(),
-                transforms.ToTensor(),  # Converting cropped images to tensors
-                transforms.Normalize(mean=[0.5, 0.5, 0.5], 
-                            std=[0.5, 0.5, 0.5])
+    transforms.ToTensor()
 ])
+
+transform_test = transforms.Compose([
+    transforms.ToTensor()
+])
+
+trainset = torchvision.datasets.ImageFolder(
+    root=os.path.join(data_dir, 'train'), train=True, transform=transform_train)
+trainloader = torch.utils.datasets.DataLoader(
+    trainset, batch_size=100, shuffle=True, num_workers=100)
+
+testset = torchvision.datasets.ImageFolder(
+    root=os.path.join(data_dir, 'test'), train=False, transform=transform_test)
+testloader = torch.utils.data.DataLoader(
+    testset, batch_size=100, shuffle=False, num_workers=0)
 
 # Model
 print('==> Building model..')
