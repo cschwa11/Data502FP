@@ -99,7 +99,7 @@ start_epoch = 0  # start from epoch 0 or last checkpoint epoch
 # Data
 print('==> Preparing data..')
 transform_data = transforms.Compose([
-    T.Resize(256), # Resize images to 256 x 256
+    Transforms.Resize(256), # Resize images to 256 x 256
                 Transforms.CenterCrop(224), # Center crop image
                 Transforms.RandomHorizontalFlip(),
                 Transforms.ToTensor(),  # Converting cropped images to tensors
