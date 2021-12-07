@@ -23,8 +23,8 @@ from torch.utils.data import Dataset
 
 from tqdm.autonotebook import tqdm
 
-tinyimage_train = datasets.ImageFolder('/content/tiny-imagenet-200/train', transform = transform)
-tinyimage_train = datasets.ImageFolder('/content/tiny-imagenet-200/train', transform = transform)
+tinyimage_train = Dataset.ImageFolder('/content/tiny-imagenet-200/train', transform = transform)
+tinyimage_train = Dataset.ImageFolder('/content/tiny-imagenet-200/train', transform = transform)
 
 transform = transforms.compose([
 	transforms.Resize(256),
