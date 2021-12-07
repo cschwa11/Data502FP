@@ -65,7 +65,7 @@ def generate_dataloader(data, name, transform):
     # loader where images are in format root/label/filename
     # See https://pytorch.org/vision/stable/datasets.html
     if transform is None:
-        dataset = datasets.ImageFolder(data, transform=Tranforms.ToTensor())
+        dataset = datasets.ImageFolder(data, transform=tranforms.ToTensor())
     else:
         dataset = datasets.ImageFolder(data, transform=transform)
 
@@ -99,11 +99,11 @@ start_epoch = 0  # start from epoch 0 or last checkpoint epoch
 # Data
 print('==> Preparing data..')
 transform_data = transforms.Compose([
-    Transforms.Resize(256), # Resize images to 256 x 256
-                Transforms.CenterCrop(224), # Center crop image
-                Transforms.RandomHorizontalFlip(),
-                Transforms.ToTensor(),  # Converting cropped images to tensors
-                Transforms.Normalize(mean=[0.5, 0.5, 0.5], 
+    transforms.Resize(256), # Resize images to 256 x 256
+                transforms.CenterCrop(224), # Center crop image
+                transforms.RandomHorizontalFlip(),
+                transforms.ToTensor(),  # Converting cropped images to tensors
+                transforms.Normalize(mean=[0.5, 0.5, 0.5], 
                             std=[0.5, 0.5, 0.5])
 ])
 
