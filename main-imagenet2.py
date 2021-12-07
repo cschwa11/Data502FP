@@ -23,12 +23,6 @@ from torch.utils.data import Dataset
 
 from tqdm.autonotebook import tqdm
 
-# Retrieve data directly from Stanford data source
-!wget http://cs231n.stanford.edu/tiny-imagenet-200.zip
-  
-# Unzip raw zip file
-!unzip -qq 'tiny-imagenet-200.zip'
-
 # Define main data directory
 DATA_DIR = 'tiny-imagenet-200' # Original images come in shapes of [3,64,64]
 
