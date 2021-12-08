@@ -51,12 +51,12 @@ transform_test = transforms.Compose([
 trainset = torchvision.datasets.ImageFolder(
     root=os.path.join(data_dir, 'train'), transform=transform_train)
 trainloader = torch.utils.data.DataLoader(
-    trainset, batch_size=50, shuffle=True, num_workers=2)
+    trainset, batch_size=5, shuffle=True, num_workers=2)
 
 testset = torchvision.datasets.ImageFolder(
     root=os.path.join(data_dir, 'test'), transform=transform_test)
 testloader = torch.utils.data.DataLoader(
-    testset, batch_size=50, shuffle=False, num_workers=0)
+    testset, batch_size=5, shuffle=False, num_workers=0)
 
 # Model
 print('==> Building model..')
