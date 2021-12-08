@@ -9,6 +9,7 @@ from .shufflenet import *
 from .shufflenetv2 import *
 from .resnet_CF10 import *
 from .resnet_CF100 import *
+from .resnet_TIN import *
 from .resnext import *
 from .preact_resnet import *
 from .mobilenet import *
