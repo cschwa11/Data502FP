@@ -35,11 +35,17 @@ print('==> Preparing data..')
 data_dir = 'tiny-imagenet-200/'
 
 transform_train = transforms.Compose([
-    transforms.ToTensor()
+    transforms.Resize(256),
+    transforms.CenterCrop(224),
+    transforms.ToTensor(),
+    transforms.Normalize(mean=[0.5, 0.5, 0.5], std=[0.5, 0.5, 0.5]),
 ])
 
 transform_test = transforms.Compose([
-    transforms.ToTensor()
+    transforms.Resize(256),
+    transforms.CenterCrop(224),
+    transforms.ToTensor(),
+    transforms.Normalize(mean=[0.5, 0.5, 0.5], std=[0.5, 0.5, 0.5]),
 ])
 
 trainset = torchvision.datasets.ImageFolder(
