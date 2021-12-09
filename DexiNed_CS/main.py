@@ -335,6 +335,7 @@ def main(args):
     training_dir = os.path.join(args.output_dir,args.train_data)
     os.makedirs(training_dir,exist_ok=True)
     checkpoint_path = os.path.join(args.output_dir, args.train_data, args.checkpoint_data)
+    print(checkpoint_path)
     if args.tensorboard and not args.is_testing:
         from torch.utils.tensorboard import SummaryWriter # for torch 1.4 or greather
         tb_writer = SummaryWriter(log_dir=training_dir)
