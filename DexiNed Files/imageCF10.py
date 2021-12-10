@@ -76,11 +76,10 @@ def save_image_batch_to_disk(tensor, output_dir, file_names, img_shape=None, arg
         tensor = np.array(edge_maps)
         # print(f"tensor shape: {tensor.shape}")
 
+        image_shape = [x.cpu().detach().numpy() for x in img_shape]
         # (H, W) -> (W, H)
-        image_shape=[]
-        for a in range(0,len(file_names)):
-         image_shape = [image_shape.append([32,32])]
-
+        image_shape = [[y, x] for x, y in zip(image_shape[1], image_shape[2])]
+        print(image_shape)
         assert len(image_shape) == len(file_names)
 
         idx = 0
@@ -103,10 +102,10 @@ def save_image_batch_to_disk(tensor, output_dir, file_names, img_shape=None, arg
                     tmp_img2 = tmp2[i]
                     tmp_img2 = np.uint8(image_normalization(tmp_img2))
                     tmp_img2 = cv2.bitwise_not(tmp_img2)
-                print(tmp_img.shape[0])
+                print(i_shape)
 
                 # Resize prediction to match input image size
-                if not tmp_img.shape[1] == 32 or not tmp_img.shape[0] == 32:
+                if not tmp_img.shape[1] == i_shape[0] or not tmp_img.shape[0] == i_shape[1]:
                     tmp_img = cv2.resize(tmp_img, (i_shape[0], i_shape[1]))
                     tmp_img2 = cv2.resize(tmp_img2, (i_shape[0], i_shape[1])) if tmp2 is not None else None
 
