@@ -1,4 +1,4 @@
-'''Train CIFAR10 with PyTorch.'''
+'''Train SVHN with PyTorch.'''
 import torch
 import torch.nn as nn
 import torch.optim as optim
@@ -15,7 +15,7 @@ from models import *
 from utils import progress_bar
 
 
-parser = argparse.ArgumentParser(description='PyTorch CIFAR10 Training')
+parser = argparse.ArgumentParser(description='PyTorch SVHN Training')
 parser.add_argument('--lr', default=0.1, type=float, help='learning rate')
 parser.add_argument('--resume', '-r', action='store_true',
                     help='resume from checkpoint')
