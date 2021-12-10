@@ -108,8 +108,9 @@ class CustomDataSet(Dataset):
         img_loc = os.path.join(self.main_dir, self.total_imgs[idx])
         image = PIL.Image.open(img_loc)
         tensor_image = self.transform(image)
-        fn=img_loc.replace('/content/Data502FP/DexiNed_CS/data/','edge_')
-        sample={'image':tensor_image, 'file_names':fn}
+        img_shape=tensor_image.shape
+        fn=img_loc.replace('/content/DexiNed_CIFAR10/data/','edge_')
+        sample={'image':tensor_image, 'file_names':fn, 'image_shape':img_shape}
         return sample
 
 def validate_one_epoch(epoch, dataloader, model, device, output_dir, arg=None):
@@ -148,11 +149,13 @@ def test(checkpoint_path, dataloader, model, device, output_dir, args):
         for batch_id, sample_batched in enumerate(dataloader):
             
             images = sample_batched['image'].to(device)
+            print(images)
             if not args.test_data == "CLASSIC":
                 labels = sample_batched['labels'].to(device)
             file_names = sample_batched['file_names']
-            
-            image_shape = sample_batched['image'].shape
+            print(file_names)
+            image_shape = sample_batched['image_shape']
+            print(image_shape)
             
             print(f"input tensor shape: {images.shape}")
             # images = images[:, [2, 1, 0], :, :]
@@ -162,12 +165,11 @@ def test(checkpoint_path, dataloader, model, device, output_dir, args):
             print(file_names)
             tmp_duration = time.time() - start_time
             total_duration.append(tmp_duration)
-            torchvision.utils.save_image(preds[6],file_names[0])
-            #save_image_batch_to_disk(preds,
-             #                        output_dir,
-              #                       file_names,
-               #                      image_shape,
-                #                     arg=args)
+            save_image_batch_to_disk(preds,
+                                    output_dir,
+                                     file_names,
+                                     image_shape,
+                                     arg=args)
             torch.cuda.empty_cache()
 
     total_duration = np.array(total_duration)
