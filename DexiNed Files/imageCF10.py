@@ -79,15 +79,17 @@ def save_image_batch_to_disk(tensor, output_dir, file_names, img_shape=None, arg
         image_shape = [x.cpu().detach().numpy() for x in img_shape]
         # (H, W) -> (W, H)
         image_shape = [[y, x] for x, y in zip(image_shape[1], image_shape[2])]
-        print(image_shape)
+
         assert len(image_shape) == len(file_names)
 
         idx = 0
         for i_shape, file_name in zip(image_shape, file_names):
             tmp = tensor[:, idx, ...]
+            print(tmp.shape)
             tmp2 = tensor2[:, idx, ...] if tensor2 is not None else None
             # tmp = np.transpose(np.squeeze(tmp), [0, 1, 2])
             tmp = np.squeeze(tmp)
+            print(tmp.shape)
             tmp2 = np.squeeze(tmp2) if tensor2 is not None else None
 
             # Iterate our all 7 NN outputs for a particular image
@@ -96,18 +98,17 @@ def save_image_batch_to_disk(tensor, output_dir, file_names, img_shape=None, arg
                 tmp_img = tmp[i]
                 tmp_img = np.uint8(image_normalization(tmp_img))
                 tmp_img = cv2.bitwise_not(tmp_img)
-                # tmp_img[tmp_img < 0.0] = 0.0
-                # tmp_img = 255.0 * (1.0 - tmp_img)
+                tmp_img[tmp_img < 0.0] = 0.0
+                tmp_img = 255.0 * (1.0 - tmp_img)
                 if tmp2 is not None:
                     tmp_img2 = tmp2[i]
                     tmp_img2 = np.uint8(image_normalization(tmp_img2))
                     tmp_img2 = cv2.bitwise_not(tmp_img2)
-                print(i_shape)
 
                 # Resize prediction to match input image size
                 if not tmp_img.shape[1] == i_shape[0] or not tmp_img.shape[0] == i_shape[1]:
-                    tmp_img = cv2.resize(tmp_img, (i_shape[0], i_shape[1]))
-                    tmp_img2 = cv2.resize(tmp_img2, (i_shape[0], i_shape[1])) if tmp2 is not None else None
+                    tmp_img = cv2.resize(tmp_img, (i_shape[1], i_shape[2]))
+                    tmp_img2 = cv2.resize(tmp_img2, (i_shape[1], i_shape[2])) if tmp2 is not None else None
 
 
                 if tmp2 is not None:
