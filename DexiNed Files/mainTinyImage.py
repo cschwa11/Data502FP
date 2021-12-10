@@ -407,7 +407,7 @@ def main(args):
                                       shuffle=True,
                                       num_workers=args.workers)
 
-    dataset_val = CustomDataSet('/content/DexiNed_CIFAR10/data',transform_test)
+    dataset_val = CustomDataSet('/content/DexiNed_TinyImage/data',transform_test)
     dataloader_val = DataLoader(dataset_val,
                                 batch_size=1,
                                 shuffle=False,
