@@ -130,8 +130,8 @@ def save_image_batch_to_disk(tensor, output_dir, file_names, img_shape=None, arg
             # Get the mean prediction of all the 7 outputs
             average = np.array(preds, dtype=np.float32)
             average = np.uint8(np.mean(average, axis=0))
-            output_file_name_f = os.path.join('/content/SVHN_Edge/f/test', file_name)
-            output_file_name_a = os.path.join('/content/SVHN_Edge/a/test', file_name)
+            output_file_name_f = os.path.join('/content/SVHN_Edge/f/test/', file_name)
+            output_file_name_a = os.path.join('/content/SVHN_Edge/a/test/', file_name)
             cv2.imwrite(output_file_name_f, fuse)
             cv2.imwrite(output_file_name_a, average)
 
