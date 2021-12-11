@@ -17,6 +17,11 @@ from model import DexiNed
 from utils import (image_normalization, save_image_batch_to_disk,
                    visualize_result,count_parameters)
 
+os.mkdir('/content/CF10_Edge/a')
+os.mkdir('/content/CF10_Edge/f')
+
+
+
 IS_LINUX = True if platform.system()=="Linux" else False
 def train_one_epoch(epoch, dataloader, model, criterion, optimizer, device,
                     log_interval_vis, tb_writer, args=None):
