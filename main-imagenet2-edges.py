@@ -45,7 +45,8 @@ transform_test = transforms.Compose([
 ])
 
 trainset = torchvision.datasets.ImageFolder(
-    root=os.path.join(data_dir, 'train'), transform=transform_train)
+    root='content/tiny-imagenet-200/test/train/'
+, transform=transform_train)
 trainloader = torch.utils.data.DataLoader(
     trainset, batch_size=5, shuffle=True, num_workers=2)
 
