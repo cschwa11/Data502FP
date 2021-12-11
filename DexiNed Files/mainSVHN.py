@@ -109,7 +109,7 @@ class CustomDataSet(Dataset):
         image = PIL.Image.open(img_loc)
         tensor_image = self.transform(image)
         img_shape=tensor_image.shape
-        fn=img_loc.replace('/content/DexiNed_CIFAR10/data/','edge_')
+        fn=img_loc.replace('/content/DexiNed_SVHN/data/','edge_')
         sample={'image':tensor_image, 'file_names':fn, 'image_shape':img_shape}
         return sample
 
