@@ -32,7 +32,7 @@ start_epoch = 0  # start from epoch 0 or last checkpoint epoch
 
 # Data
 print('==> Preparing data..')
-data_dir = '/content/CF10_Edge/a'
+data_dir = '/content/CF100_Edge/a'
 
 transform_train = transforms.Compose([
     transforms.ToTensor(),
