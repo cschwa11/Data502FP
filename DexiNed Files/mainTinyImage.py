@@ -19,6 +19,7 @@ from utils import (image_normalization, save_image_batch_to_disk,
 os.mkdir('/content/TIN_Edge/a')
 os.mkdir('/content/TIN_Edge/f')
 os.mkdir('/content/TIN_Edge/a/test')
+os.mkdir('/content/TIN_Edge/a/train')
 
 IS_LINUX = True if platform.system()=="Linux" else False
 def train_one_epoch(epoch, dataloader, model, criterion, optimizer, device,
