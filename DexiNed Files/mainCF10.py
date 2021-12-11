@@ -19,7 +19,7 @@ from utils import (image_normalization, save_image_batch_to_disk,
 
 os.mkdir('/content/CF10_Edge/a')
 os.mkdir('/content/CF10_Edge/f')
-
+os.mkdir('/content/CF10_Edge/a/test')
 
 
 IS_LINUX = True if platform.system()=="Linux" else False
