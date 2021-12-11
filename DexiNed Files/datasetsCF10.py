@@ -145,8 +145,8 @@ def dataset_info(dataset_name, is_linux=True):
                       'train_list': 'train_rgb.lst',
                       'data_dir': 'C:/Users/xavysp/dataset/BIPED',  # WIN: '../.../dataset/BIPED/edges'
                       'yita': 0.5},
-            'CLASSIC': {'img_height': 512,
-                        'img_width': 512,
+            'CLASSIC': {'img_height': 32,
+                        'img_width': 32,
                         'test_list': None,
                         'train_list': None,
                         'data_dir': 'data',  # mean_rgb
