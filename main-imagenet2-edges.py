@@ -32,7 +32,7 @@ start_epoch = 0  # start from epoch 0 or last checkpoint epoch
 
 # Data
 print('==> Preparing data..')
-data_dir = 'tiny-imagenet-200/'
+data_dir = '/content/TIN_Edge/a'
 
 transform_train = transforms.Compose([
     transforms.ToTensor(),
