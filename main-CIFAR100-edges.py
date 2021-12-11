@@ -1,4 +1,4 @@
-'''Train TinyImageNetDataset with PyTorch.'''
+'''Train CIFAR100 Edges with PyTorch.'''
 import torch
 import torch.nn as nn
 import torch.optim as optim
@@ -16,7 +16,7 @@ from utils import progress_bar
 
 	
     
-parser = argparse.ArgumentParser(description='PyTorch TinyImageNetDataset Edges Training')
+parser = argparse.ArgumentParser(description='PyTorch CIFAR100 Edges Training')
 parser.add_argument('--lr', default=0.1, type=float, help='learning rate')
 parser.add_argument('--resume', '-r', action='store_true',
                     help='resume from checkpoint')
