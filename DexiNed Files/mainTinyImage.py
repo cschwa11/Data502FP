@@ -112,7 +112,7 @@ class CustomDataSet(Dataset):
         image = image.convert('RGB')
         tensor_image = self.transform(image)
         img_shape=tensor_image.shape
-        fn=img_loc.replace('/content/DexiNed_TIN/data/','edge_')
+        fn=img_loc.replace('/content/DexiNed_TinyImage/data/','edge_')
         sample={'image':tensor_image, 'file_names':fn, 'image_shape':img_shape}
         return sample
 
