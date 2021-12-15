@@ -109,6 +109,7 @@ class CustomDataSet(Dataset):
     def __getitem__(self, idx):
         img_loc = os.path.join(self.main_dir, self.total_imgs[idx])
         image = PIL.Image.open(img_loc)
+        image = image.convert('RGB')
         tensor_image = self.transform(image)
         img_shape=tensor_image.shape
         fn=img_loc.replace('/content/DexiNed_CIFAR10/data/','edge_')
